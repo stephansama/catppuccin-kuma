@@ -17,7 +17,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/dark.png">
     <source media="(prefers-color-scheme: light)" srcset="./.github/assets/light.png">
-    <img alt="Marzbanify Template" src="./.github/assets/dark.png">
+    <img alt="Cute Kuma" src="./.github/assets/dark.png">
   </picture>
 </p>
 
