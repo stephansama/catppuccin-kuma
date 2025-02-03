@@ -3,7 +3,7 @@
 <p align="center">
   Cute CSS for  <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a> status page with a simple and modern look
   <br>
-  <a href="https://status.denisromanov.ru"><strong>Live demo »</strong></a>
+  <a href="https://kuma.denisromanov.ru"><strong>Live demo »</strong></a>
   <br>
   <br>
   <a href="https://github.com/dermv/cute-kuma/tree/main#features">Features</a>
