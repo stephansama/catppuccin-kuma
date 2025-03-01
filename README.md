@@ -8,7 +8,7 @@
   <br>
   <a href="https://github.com/dermv/cute-kuma/tree/main#features">Features</a>
   ·
-  <a href="https://github.com/dermv/cute-kuma/tree/main#installation">Installation</a>
+  <a href="https://github.com/dermv/cute-kuma/tree/main#install">Install</a>
   ·
   <a href="https://github.com/dermv/cute-kuma/tree/main#personalization">Personalization</a>
 </p>
@@ -21,14 +21,14 @@
   </picture>
 </p>
 
-# Features
+## Features
 
-- Simple and modern design, inspired by the pages of major monitoring services.
-- Light and dark themes support.
-- Removed the refresh timer (easily restored if needed).
-- Clean and understandable code, easily customizable to fit your needs.
+- Modern design: Inspired by top monitoring services
+- Light and dark themes
+- No refresh timer: Removed by default (optional restoration)
+- Clean code: Easy to customize and extend
 
-# Installation
+## Install
 
 1. In your Uptime Kuma dashboard, navigate to status page.
 2. Click `Edit Status Page`.
@@ -36,7 +36,7 @@
 4. Copy the contents of `main.css` and paste it into the Custom CSS field.
 5. Click `Save` at the bottom.
 
-# Personalization
+## Personalization
 
 You can modify the values inside `:root {}` to fit your needs.
 
