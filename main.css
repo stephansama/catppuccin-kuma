@@ -1,328 +1,442 @@
-/* Base theme settings */
+/* Colors and settings. */
 :root {
-  /* Base theme colors */
-  --color-black: #666;
-  --color-green: #1aad3a;
-  --color-blue: #087fe7;
-  --color-teal: #27918d;
-  --color-yellow: #ffaf0f;
-  --color-orange: #ff6f00;
-  --color-red: #f64831;
-  --color-gray: #77726e;
+  /* Palette colors. */
+  --color-gray: rgb(130, 135, 140);
+  --color-red: rgb(200, 70, 60);
+  --color-orange: rgb(210, 135, 0);
+  --color-teal: rgb(0, 130, 140);
+  --color-blue: rgb(15, 115, 180);
+  --color-green: rgb(45, 150, 90);
 
-  --body-color: #212529;
-  --body-bg: #fff;
-  --heading-color: #000;
-  --secondary-color: var(--color-gray);
+  /* Palette RGB colors. */
+  --rgb-color-gray: 130, 135, 140;
+  --rgb-color-red: 200, 70, 60;
+  --rgb-color-orange: 210, 135, 0;
+  --rgb-color-yellow: 255, 175, 15;
+  --rgb-color-teal: 0, 130, 140;
+  --rgb-color-blue: 15, 115, 180;
+  --rgb-color-green: 45, 150, 90;
 
-  --block-bg: #f6f5f4;
+  /* Light theme colors. */
+  --color-bg: rgb(255, 255, 255);
+  --color-text: rgb(85, 85, 85);
+  --color-text-title: rgb(20, 20, 20);
+  --color-text-secondary: rgb(140, 140, 140);
+  --color-btn-secondary: transparent;
+  --color-btn-secondary-hover: rgb(230, 230, 230);
+  --color-btn-secondary-active: rgb(210, 210, 210);
+  --color-btn-secondary-border: rgba(0, 0, 0, .16);
+  --color-border: rgba(0, 0, 0, .13);
+  --color-block: rgb(242, 242, 242);
+  --color-monitor: rgb(255, 255, 255);
 
-  /* Incident block colors */
-  --incident-color: #fff;
-  --incident-info-bg: var(--color-teal);
-  --incident-warning-bg: var(--color-orange);
-  --incident-danger-bg: var(--color-red);
-  --incident-primary-bg: var(--color-green);
-  --incident-light-bg: var(--color-gray);
-  --incident-dark-bg: var(--color-black);
-
-  /* Main status block colors */
-  --overall-status-color: #fff;
-  --overall-status-ok-bg: var(--color-green);
-  --overall-status-warning-bg: var(--color-yellow);
-  --overall-status-danger-bg: var(--color-red);
-  --overall-status-maintenance-bg: var(--color-blue);
-
-  /* Maintenance block colors */
-  --maintenance-color: var(--color-blue);
-  --maintenance-bg: #ebf5fe;
-
-  /* Colors of timeslot in the maintenance block */
-  --timeslot-color: #2383e2;
-  --timeslot-bg: rgba(35, 131, 226, .14);
-  --timeslot-border-color: rgba(35, 131, 226, .35);
-
-  /* Uptime percentage color */
-  --badge-color: #7f7f7f;
-
-  /* Colors of HP bar beat */
-  --beat-ok-bg: var(--color-green);
-  --beat-empty-bg: var(--color-gray);
-  --beat-down-bg: var(--color-red);
-  --beat-pending-bg: var(--color-yellow);
-  --beat-maintenance-bg: var(--color-blue);
-
-  /* Color of time under the HP bar */
-  --word-color: #7f7f7f;
-
-  /* Layout settings */
-  --min-item-width: 32ch;
-  --max-item-width: 1fr;
-
-  /* Colors for dark theme */
-  .dark {
-    --body-color: #dee2e6;
-    --body-bg: #151515;
-    --heading-color: #fff;
-
-    --block-bg: #232323;
-
-    --maintenance-bg: rgba(35, 131, 226, .07);
-  }
+  /* Settings. */
+  --container-width: 864px;
+  --border-radius-block: .5rem;
+  --border-radius-btn: .375rem;
+  --spacing-1: .5rem;
+  --spacing-2: .75rem;
+  --spacing-3: 1rem;
+  --spacing-4: 2rem;
+  --btn-padding: 6px 12px;
+  --font-size-title: 18px;
+  --monitor-width-min: 30ch;
+  --monitor-width-max: 1fr;
+  --logo-width: 48px;
+  --logo-height: 48px;
+  --beat-height: 1.25rem;
+  --monitor-items-margin: 4px;
+}
+/* Dark theme colors. */
+.dark {
+  --color-bg: rgb(8, 8, 8);
+  --color-text: rgb(175, 175, 175);
+  --color-text-title: rgb(240, 240, 240);
+  --color-text-secondary: rgb(125, 125, 125);
+  --color-btn-secondary: transparent;
+  --color-btn-secondary-hover: rgb(41, 41, 41);
+  --color-btn-secondary-active: rgb(31, 31, 31);
+  --color-btn-secondary-border: rgba(255, 255, 255, .13);
+  --color-border: rgba(255, 255, 255, .06);
+  --color-block: rgb(21, 21, 21);
+  --color-monitor: rgb(31, 31, 31);
 }
 
 body {
-  background-color: var(--body-bg) !important;
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+
+a:not(.btn),
+.dark a:not(.btn) {
+  color: inherit;
+}
+a:not(.btn):hover,
+.dark a:not(.btn):hover {
+  color: var(--color-blue);
 }
 
 .container {
-  width: 97.5%;
-  max-width: 54rem;
+  margin-top: 0 !important;
+  padding-top: var(--spacing-4);
+  padding-right: var(--spacing-3);
+  padding-left: var(--spacing-3);
+  max-width: var(--container-width);
 }
 
-/* Center the logo */
+/* Element with logo and title. */
+.title-flex {
+  margin-bottom: var(--spacing-4) !important;
+}
+
+/* Center the logo. */
 .logo-wrapper {
   margin-right: auto;
   margin-left: auto;
 }
 
-/* Remove the title adjacent to the logo */
+/* Resize the logo. */
+.logo-wrapper img[data-v-b8247e57] {
+  width: var(--logo-width);
+  height: var(--logo-height);
+}
+
+/* Remove the title adjacent to the logo. */
 span[data-v-7d4a7f28] {
   display: none;
 }
 
-/* Fix vertical margin of admin buttons on mobile */
+/* Fix vertical margin of admin buttons on mobile. */
 .mb-4[data-v-b8247e57]:has(.btn-info) {
-  margin-bottom: 2.5rem !important;
+  margin-bottom: var(--spacing-4) !important;
+}
+.mb-4[data-v-b8247e57]:has(.btn-info) div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
+}
+.mb-4[data-v-b8247e57]:has(.btn-info) div button {
+  margin: 0 !important;
+}
 
-  div {
-    gap: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-  
-    & button {
-      margin: 0 !important;
-    }
-  }
+/* Block with admin buttons. */
+.mb-4[data-v-b8247e57]:has(.btn-info) {
+  border-radius: var(--border-radius-block);
+  background-color: var(--color-block);
+  padding: var(--spacing-3);
+}
+
+/* Admin button. */
+.btn-info[data-v-b8247e57] {
+  box-shadow: none;
+  border: 1px solid var(--color-btn-secondary-border);
+  border-radius: var(--border-radius-btn);
+  background-color: var(--color-btn-secondary);
+  padding: var(--btn-padding);
+  color: var(--color-text-title);
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-info[data-v-b8247e57]:hover {
+  background-color: var(--color-btn-secondary-hover);
+}
+.btn-info[data-v-b8247e57]:active {
+  box-shadow: none;
+  background-color: var(--color-btn-secondary-active);
+}
+.btn-info[data-v-b8247e57] svg {
+  display: none;
 }
 
 /* Incident block */
-.incident {
-  margin-bottom: 1rem !important;
-  border-radius: 1rem;
-  color: var(--incident-color) !important;
-
-  &.bg-info {
-    background-color: var(--incident-info-bg) !important;
-  }
-
-  &.bg-warning {
-    background-color: var(--incident-warning-bg) !important;
-  }
-
-  &.bg-danger {
-    background-color: var(--incident-danger-bg) !important;
-  }
-
-  &.bg-primary {
-    background-color: var(--incident-primary-bg) !important;
-  }
-
-  &.bg-light {
-    background-color: var(--incident-light-bg) !important;
-  }
-
-  &.bg-dark {
-    background-color: var(--incident-dark-bg) !important;
-  }
+.incident[data-v-b8247e57] {
+  margin-bottom: var(--spacing-3) !important;
+  border-radius: var(--border-radius-block);
+  padding: var(--spacing-3) !important;
+  color: var(--color-text-title) !important;
+}
+.incident[data-v-b8247e57].bg-info {
+  background-color: rgba(var(--rgb-color-teal), .15) !important;
+}
+.incident[data-v-b8247e57].bg-warning {
+  background-color: rgba(var(--rgb-color-orange), .15) !important;
+}
+.incident[data-v-b8247e57].bg-danger {
+  background-color: rgba(var(--rgb-color-red), .15) !important;
+}
+.incident[data-v-b8247e57].bg-primary {
+  background-color: rgba(var(--rgb-color-green), .15) !important;
+}
+.incident[data-v-b8247e57].bg-light {
+  background-color: rgba(var(--rgb-color-gray), .3) !important;
+}
+.incident[data-v-b8247e57].bg-dark {
+  background-color: rgba(var(--rgb-color-gray), .15) !important;
+}
+.incident[data-v-b8247e57] h4 {
+  font-size: var(--font-size-title);
+}
+.incident[data-v-b8247e57] div {
+  color: var(--color-text);
 }
 
-/* Main status block */
-.overall-status {
-  display: block;
-  margin-bottom: 1rem !important;
-  padding: 1rem 1.5rem !important;
-  border-radius: 1rem;
-  color: var(--overall-status-color);
-  font-weight: 600 !important;
-  font-size: 1.5rem !important;
+/* Main status block. */
+.overall-status[data-v-b8247e57] {
+  margin-bottom: var(--spacing-3) !important;
   box-shadow: none;
-
-  &:has(.ok) {
-    background-color: var(--overall-status-ok-bg) !important;
-  }
-
-  &:has(.warning) {
-    background-color: var(--overall-status-warning-bg) !important;
-  }
-
-  &:has(.danger) {
-    background-color: var(--overall-status-danger-bg) !important;
-  }
-
-  &:has(.status-maintenance) {
-    background-color: var(--overall-status-maintenance-bg) !important;
-  }
-
-  svg {
-    display: none;
-  }
+  border-radius: var(--border-radius-block);
+  padding: var(--spacing-3) !important;
+  color: #fff;
+  font-weight: 500;
+  font-size: var(--font-size-title);
+  line-height: 1;
+}
+.overall-status[data-v-b8247e57]:has(.ok) {
+  background-color: var(--color-green);
+}
+.overall-status[data-v-b8247e57]:has(.warning) {
+  background-color: var(--color-orange);
+}
+.overall-status[data-v-b8247e57]:has(.danger) {
+  background-color: var(--color-red);
+}
+.overall-status[data-v-b8247e57]:has(.status-maintenance) {
+  background-color: var(--color-blue);
+}
+.overall-status[data-v-b8247e57] svg {
+  display: none;
 }
 
-/* Maintenance block */
+/* Maintenance block. */
 .shadow-box.bg-maintenance {
-  margin-top: 1rem !important;
-  padding: 1.5rem !important;
-  border-radius: 1rem;
-  color: var(--maintenance-color) !important;
-  background-color: var(--maintenance-bg) !important;
-  box-shadow: none !important;
+  margin-top: var(--spacing-3) !important;
+  margin-bottom: var(--spacing-3) !important;
+  box-shadow: none;
+  border-radius: var(--border-radius-block);
+  background-color: rgba(var(--rgb-color-blue), .15) !important;
+  padding: var(--spacing-3) !important;
+  color: var(--color-text-title) !important;
+}
+.shadow-box.bg-maintenance .alert-heading {
+  color: var(--color-text-title);
+  font-weight: 500;
+  font-size: var(--font-size-title);
+}
+.shadow-box.bg-maintenance .content {
+  color: var(--color-text);
+}
+.shadow-box.bg-maintenance div[data-v-b8247e57]:not([class]) div:not([class]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
 }
 
-/* Timeslot in the maintenance block */
+/* Timeslot in the maintenance block. */
 .timeslot {
-  border: 1px solid var(--timeslot-border-color);
+  margin-top: 0;
+  margin-right: 0 !important;
+  border: 1px solid rgba(var(--rgb-color-blue), .25);
   border-radius: 2rem;
-  color: var(--timeslot-color) !important;
-  background-color: var(--timeslot-bg) !important;
+  background-color: rgba(var(--rgb-color-blue), .15) !important;
+  color: var(--color-blue) !important;
 }
 
-/* Description */
-div > .alert-heading.p-2 {
-  color: var(--body-color);
-  text-align: center;
+/* User markdown elements. */
+.alert-heading.p-2 {
+  margin-bottom: var(--spacing-4);
+  padding: 0 !important;
+}
+.alert-heading.p-2 p {
+  margin: 0;
 }
 
-/* Monitor group title */
+/* Page description. */
+div > .alert-heading.p-2:has(*) {
+  margin-top: var(--spacing-4);
+  border-radius: var(--border-radius-block);
+  background-color: var(--color-block);
+  padding: var(--spacing-3) !important;
+}
+
+/* Monitor group. */
+div[data-v-f71ca08e]:has(> .group-title) {
+  margin-bottom: var(--spacing-3) !important;
+  border-radius: var(--border-radius-block);
+  background-color: var(--color-block);
+  padding: var(--spacing-3);
+}
+
+/* Monitor group title. */
 .group-title {
-  color: var(--heading-color);
-  font-weight: 600 !important;
-  font-size: 1.5rem !important;
+  margin-bottom: var(--spacing-3);
+  color: var(--color-text-title);
+  font-size: var(--font-size-title);
 }
 
-/* Monitor group */
+/* Monitor elements in the group. */
 .shadow-box.monitor-list {
-  margin-top: 1rem !important;
-  padding: 0;
+  margin-top: 0 !important;
+  box-shadow: none;
   background-color: transparent !important;
-  box-shadow: none !important;
+  padding: 0;
+}
+.shadow-box.monitor-list > .monitor-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      min(var(--monitor-width-min), 100%),
+      var(--monitor-width-max)
+    )
+  );
+  grid-gap: var(--spacing-3);
+}
 
-  & > .monitor-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--min-item-width), var(--max-item-width)));
-    grid-gap: 1rem;
+/* Adjusting grid layout at certain viewport sizes. */
+/* It's not perfect, but it works. */
+@media (min-width: 540px) and (max-width: 604px) {
+  .shadow-box.monitor-list > .monitor-list {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(
+        min(20ch, 100%),
+        var(--monitor-width-max)
+      )
+    );
   }
 }
 
-/* Monitor item */
-.item {
-  padding: 1.25rem 1.25rem 1rem !important;
-  border-radius: 1rem !important;
-  background-color: var(--block-bg);
-
-  & > .row {
-    flex-direction: column;
-
-    & > div {
-      width: 100%;
-    }
-  }
-
-  &:hover {
-    background-color: var(--block-bg) !important;
-  }
+/* Monitor item. */
+.monitor-list .item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-block);
+  background-color: var(--color-monitor);
+  padding: var(--spacing-3) !important;
+}
+.monitor-list .item:hover {
+  background-color: var(--color-monitor) !important;
+}
+.monitor-list .item > .row {
+  flex-direction: column;
+}
+.monitor-list .item > .row > div {
+  width: 100%;
 }
 
-/* Correct behavior in a strange way */
-@media (max-width: 768px) {
-  :root {
-    --min-item-width: 26ch;
-  }
-}
-
-/* Monitor name and badge container */
+/* Monitor name and badge container. */
 .info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: var(--spacing-1);
 }
 
-/* Monitor name */
-.item-name {
-  padding-right: 0 !important;
-  padding-left: 4px !important;
+/* Monitor name. */
+.item-name[data-v-f71ca08e] {
+  padding-right: 0;
+  padding-left: var(--monitor-items-margin);
   overflow: hidden;
-  color: var(--heading-color);
-  font-weight: 500;
+  color: var(--color-text-title);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Uptime percentage badge (now just text) */
+/* Uptime percentage badge (now just text). */
 .badge {
   all: unset;
   order: 2;
-  padding-right: 2px !important;
-  color: var(--badge-color) !important;
   background-color: transparent !important;
+  padding-right: var(--monitor-items-margin);
+  color: var(--color-gray) !important;
+}
+.badge.bg-danger {
+  color: var(--color-red) !important;
+}
+.badge.bg-warning {
+  color: var(--color-orange) !important;
+}
+.badge.bg-primary {
+  color: var(--color-green) !important;
+}
+.badge.bg-maintenance {
+  color: var(--color-blue) !important;
 }
 
-/* Hmm... */
-@media (max-width: 600px) {
-  .badge {
-    padding-right: 4px !important;
-  }
-}
-
-/* Extra vertical indentation */
-.extra-info {
-  display: none !important;
-}
-
-/* HP bar and time container */
-.wrap {
-  padding: 4px 2px !important;
-}
-
-/* Beat of HP bar */
-.beat {
-  height: 1.5rem !important;
-  background-color: var(--beat-ok-bg) !important;
-
-  &.empty {
-    background-color: var(--beat-empty-bg) !important;
-  }
-
-  &.down {
-    background-color: var(--beat-down-bg) !important;
-  }
-
-  &.pending {
-    background-color: var(--beat-pending-bg) !important;
-  }
-
-  &.maintenance {
-    background-color: var(--beat-maintenance-bg) !important;
-  }
-}
-
-/* Time under the HP bar */
-.word {
-  padding-right: 2px !important;
-  padding-left: 2px !important;
-  color: var(--word-color) !important;
-}
-
-/* Custom footer and Uptime Kuma branding */
-footer p,
-footer p a {
-  color: var(--secondary-color) !important;
-}
-
-/* Remove a refresh timer.
-   Comment "display: none" to return */
-.refresh-info {
+/* Extra vertical indentation. */
+.extra-info[data-v-f71ca08e] {
   display: none;
-  opacity: 1 !important;
-  color: var(--secondary-color);
+}
+
+/* Wrapper for the uptime history timeline and daily uptime text. */
+.wrap {
+  padding: 0 !important;
+}
+.mobile .wrap {
+  padding-bottom: 6px !important;
+}
+
+/* Uptime history timeline. */
+.hp-bar-big {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--spacing-1);
+}
+.mobile .hp-bar-big {
+  padding-bottom: 0;
+}
+
+/* Daily bar in the uptime history timeline. */
+.hp-bar-big .beat[data-v-636dc6a9] {
+  margin: 0 2px !important;
+  background-color: var(--color-green);
+  height: var(--beat-height) !important;
+}
+.hp-bar-big .beat[data-v-636dc6a9]:not(.empty):hover {
+  transform: none;
+  opacity: .75;
+  transition: all ease-in-out .15s;
+}
+.hp-bar-big .beat[data-v-636dc6a9]:first-of-type {
+  margin-left: 0 !important;
+}
+.hp-bar-big .beat[data-v-636dc6a9]:last-of-type {
+  margin-right: 0 !important;
+}
+.hp-bar-big .beat[data-v-636dc6a9].empty {
+  background-color: var(--color-gray);
+}
+.hp-bar-big .beat[data-v-636dc6a9].down {
+  background-color: var(--color-red);
+}
+.hp-bar-big .beat[data-v-636dc6a9].pending {
+  background-color: var(--color-orange);
+}
+.hp-bar-big .beat[data-v-636dc6a9].maintenance {
+  background-color: var(--color-blue);
+}
+
+/* Daily uptime text (below day bars). */
+.word[data-v-636dc6a9] {
+  margin-right: var(--monitor-items-margin);
+  margin-left: var(--monitor-items-margin) !important;
+  color: var(--color-text);
+}
+
+/* Footer with user markdown, Uptime Kuma branding, and refresh timer. */
+footer[data-v-b8247e57] {
+  margin-top: var(--spacing-4) !important;
+  margin-bottom: var(--spacing-4) !important;
+  color: var(--color-text-secondary);
+}
+
+/* Extra spacing if the user footer has anything. */
+footer .alert-heading.p-2:has(*) {
+  margin-bottom: var(--spacing-3) !important;
+}
+
+/* Hide refresh timer in footer. */
+/* Remove/comment "display: none" to restore visibility. */
+.refresh-info[data-v-b8247e57] {
+  display: none;
+  opacity: 1;
+  margin-bottom: 0 !important;
 }
