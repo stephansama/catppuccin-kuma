@@ -40,11 +40,11 @@
 
 You can modify the values inside `:root {}` to fit your needs.
 
-By default, the refresh timer is removed. To restore it, simply comment `display: none;` in `.refresh-info` as shown here:
+By default, the refresh timer is removed. Remove/comment `display: none;` in `.refresh-info` to restore visibility as shown here:
 ```
-.refresh-info {
+.refresh-info[data-v-b8247e57] {
   /* display: none; */
-  opacity: 1 !important;
-  color: var(--secondary-color);
+  opacity: 1;
+  margin-bottom: 0 !important;
 }
 ```
