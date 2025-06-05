@@ -26,6 +26,7 @@
   --color-block-bg: #f2f2f2;
   --color-monitor-bg: #fff;
   --color-monitor-border: rgba(0, 0, 0, .13);
+  --color-input-field: #e2e2e2;
 
   /* Button: Secondary */
   --color-btn-secondary-bg: transparent;
@@ -33,8 +34,12 @@
   --color-btn-secondary-active: #d2d2d2;
   --color-btn-secondary-border: rgba(0, 0, 0, .16);
 
+  /* Specific colors */
+  --color-text-overall-status: #fff;
+
   /* Layout and sizing */
   --size-container-width: 864px;
+  --size-edit-container-width: 1164px;
   --size-logo-width: 48px;
   --size-logo-height: 48px;
   --size-monitor-min-width: 30ch;
@@ -54,15 +59,19 @@
   --radius-sm: .375rem;
   --radius-md: .5rem;
 
+  /* Specific border radius */
+  --radius-timeslot: 2rem;
+
   /* Typography */
   --font-size-sm: .875rem;
   --font-size-heading: 1.125rem;
   --font-weight-medium: 500;
+  --line-height-heading: 1.2;
 
   /* Components */
   /* Button */
-  --padding-btn-y: 6px;
   --padding-btn-x: 12px;
+  --padding-btn-y: 6px;
 }
 
 /* DARK THEME OVERRIDES
@@ -77,6 +86,7 @@
   --color-block-bg: #151515;
   --color-monitor-bg: #1f1f1f;
   --color-monitor-border: rgba(255, 255, 255, .06);
+  --color-input-field: #292929;
 
   /* Button: Secondary */
   --color-btn-secondary-bg: transparent;
@@ -99,16 +109,6 @@ body {
   padding-right: var(--space-md);
   padding-left: var(--space-md);
   max-width: var(--size-container-width);
-}
-
-/* Link (excluding button) */
-a:not(.btn),
-.dark a:not(.btn) {
-  color: inherit;
-}
-a:not(.btn):hover,
-.dark a:not(.btn):hover {
-  color: var(--color-blue);
 }
 
 /* HEADER
@@ -223,10 +223,10 @@ span[data-v-7d4a7f28] {
   box-shadow: none;
   border-radius: var(--radius-md);
   padding: var(--space-md) !important;
-  color: #fff;
+  color: var(--color-text-overall-status);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-heading);
-  line-height: 1;
+  line-height: var(--line-height-heading);
 }
 .overall-status[data-v-b8247e57]:has(.ok) {
   background-color: var(--color-green);
@@ -274,7 +274,7 @@ span[data-v-7d4a7f28] {
   margin-top: 0;
   margin-right: 0 !important;
   border: 1px solid rgba(var(--rgb-color-blue), .25);
-  border-radius: 2rem;
+  border-radius: var(--radius-timeslot);
   background-color: rgba(var(--rgb-color-blue), .15) !important;
   color: var(--color-blue) !important;
 }
@@ -288,6 +288,16 @@ span[data-v-7d4a7f28] {
 }
 .alert-heading.p-2 p {
   margin: 0;
+}
+
+/* Link (excluding button) */
+a:not(.btn),
+.dark a:not(.btn) {
+  color: inherit;
+}
+a:not(.btn):hover,
+.dark a:not(.btn):hover {
+  color: var(--color-blue);
 }
 
 /* PAGE DESCRIPTION
@@ -312,6 +322,8 @@ div[data-v-f71ca08e]:has(> .group-title) {
 
 /* Monitor group title */
 .group-title {
+  display: flex;
+  align-items: center;
   margin-bottom: var(--space-md);
   color: var(--color-text-heading);
   font-size: var(--font-size-heading);
@@ -339,14 +351,8 @@ div[data-v-f71ca08e]:has(> .group-title) {
 /* Adjusting grid layout at certain viewport sizes */
 /* It's not perfect, but it works */
 @media (min-width: 540px) and (max-width: 604px) {
-  .shadow-box.monitor-list > .monitor-list {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(
-        min(20ch, 100%),
-        var(--size-monitor-max-width)
-      )
-    );
+  :root {
+    --size-monitor-min-width: 20ch;
   }
 }
 
@@ -372,14 +378,15 @@ div[data-v-f71ca08e]:has(> .group-title) {
 /* Monitor name and badge container */
 .info {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   margin-bottom: var(--space-xs);
+  padding-right: var(--space-monitor-items);
+  padding-left: var(--space-monitor-items);
 }
 
 /* Monitor name */
 .item-name[data-v-f71ca08e] {
-  padding-right: 0;
-  padding-left: var(--space-monitor-items);
+  padding-left: 0;
   overflow: hidden;
   color: var(--color-text-heading);
   text-overflow: ellipsis;
@@ -390,8 +397,8 @@ div[data-v-f71ca08e]:has(> .group-title) {
 .badge {
   all: unset;
   order: 2;
+  margin-left: auto;
   background-color: transparent !important;
-  padding-right: var(--space-monitor-items);
   color: var(--color-gray) !important;
 }
 .badge.bg-danger {
@@ -488,4 +495,24 @@ footer .alert-heading.p-2:has(*) {
   display: none;
   opacity: 1;
   margin-bottom: 0 !important;
+}
+
+/* EDIT WINDOW
+-------------------------------------------------- */
+
+.container:has(.edit) {
+  max-width: var(--size-edit-container-width);
+}
+
+/* Input field for the monitor group name */
+.edit span[data-v-7d4a7f28][data-v-f71ca08e] {
+  background-color: var(--color-input-field);
+  padding: .25rem .5rem;
+}
+
+/* Input field for page description and footer */
+.edit div[data-v-7d4a7f28][data-v-b8247e57] {
+  background-color: var(--color-input-field);
+  padding: var(--space-sm) var(--space-md) !important;
+  color: var(--color-text-heading);
 }
