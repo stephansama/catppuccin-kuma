@@ -47,8 +47,6 @@
   --size-edit-container-width: 1164px;
   --size-logo-width: 48px;
   --size-logo-height: 48px;
-  --size-monitor-min-width: 30ch;
-  --size-monitor-max-width: 1fr;
   --size-daily-bar-height: 20px;
 
   /* Spacing */
@@ -374,23 +372,16 @@ div[data-v-026459e0]:has(> .group-title) {
   background-color: transparent !important;
   padding: 0;
 }
+
 .shadow-box.monitor-list > .monitor-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(
-      min(var(--size-monitor-min-width), 100%),
-      var(--size-monitor-max-width)
-    )
-  );
-  grid-gap: var(--space-md);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
 }
 
-/* Adjusting grid layout at certain viewport sizes */
-/* It's not perfect, but it works */
-@media (min-width: 540px) and (max-width: 604px) {
-  :root {
-    --size-monitor-min-width: 20ch;
+@media (min-width: 540px) {
+  .shadow-box.monitor-list > .monitor-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
