@@ -1,7 +1,7 @@
 <h3 align="center">Cute Kuma</h3>
 
 <p align="center">
-  Give your <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a> status page a cute and modern look
+  Give your <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a> status page a cute and modern look with custom CSS
   <br>
   <a href="https://kuma.denisromanov.ru"><strong>Live demo »</strong></a>
   <br>
@@ -51,7 +51,7 @@ The refresh timer is hidden by default. To make it visible again, find the `.ref
 
 ### Country Flag Emojis Not Displaying on Windows
 
-Browsers on Windows cannot render country flag emojis correctly.
+Browsers on Windows can't render country flag emojis correctly.
 
 To fix it, add the following code to the very beginning of your CSS.
 
