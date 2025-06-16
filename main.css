@@ -3,7 +3,6 @@
 
 :root {
   /* Palette colors */
-  --color-gray: #d7dbdd;
   --color-red: #e74c3c;
   --color-orange: #f39c12;
   --color-teal: #1abc9c;
@@ -11,21 +10,20 @@
   --color-green: #27ae60;
 
   /* Palette RGB colors */
-  --rgb-color-gray: 215, 219, 221;
   --rgb-color-red: 231, 76, 60;
   --rgb-color-orange: 243, 156, 18;
   --rgb-color-teal: 26, 188, 156;
   --rgb-color-blue: 52, 152, 219;
   --rgb-color-green: 39, 174, 96;
 
-  /* Light theme semantic colors */
+  /* Light theme base colors */
   --color-bg: #fbfbfc;
   --color-text-primary: #566573;
   --color-text-heading: #141414;
   --color-text-secondary: #85929e;
   --color-block-bg: #fff;
   --color-border: rgba(0, 0, 0, .1);
-  --color-input-bg: #dcdcdc;
+  --color-uptime-bar-empty-bg: #d7dbdd;
 
   /* Button: Secondary */
   --color-btn-secondary-bg: transparent;
@@ -38,7 +36,7 @@
   --size-edit-container-width: 1164px;
   --size-logo-width: 48px;
   --size-logo-height: 48px;
-  --size-uptime-day-bar-height: 24px;
+  --size-uptime-bar-height: 24px;
 
   /* Spacing */
   --spacing-4: .25rem;
@@ -70,17 +68,14 @@
 -------------------------------------------------- */
 
 .dark {
-  /* Palette colors */
-  --color-gray: #424949;
-
-  /* Semantic colors */
+  /* Base colors */
   --color-bg: #141414;
   --color-text-primary: #909497;
   --color-text-heading: #f1f1f1;
   --color-text-secondary: #626567;
   --color-block-bg: #1e1e1e;
   --color-border: rgba(255, 255, 255, .07);
-  --color-input-bg: #323232;
+  --color-uptime-bar-empty-bg: #424949;
 
   /* Button: Secondary */
   --color-btn-secondary-bg: transparent;
@@ -92,15 +87,25 @@
 /* BASE STRUCTURE
 -------------------------------------------------- */
 
-body {
+body:not(:has(.edit)) {
   background-color: var(--color-bg) !important;
   color: var(--color-text-primary) !important;
 }
 
 .container {
   margin-top: 0 !important;
-  padding: var(--spacing-32) var(--spacing-16) 0;
+  padding: var(--spacing-32) var(--spacing-20) 0;
   max-width: var(--size-container-width);
+}
+
+/* Link (excluding button) */
+a:not(.btn),
+.dark a:not(.btn) {
+  color: inherit;
+}
+a:not(.btn):hover,
+.dark a:not(.btn):hover {
+  color: var(--color-blue);
 }
 
 /* HEADER
@@ -133,7 +138,7 @@ span[data-v-7d4a7f28] {
   display: none;
 }
 
-/* ADMIN ACTIONS BAR
+/* ADMIN BUTTONS
 -------------------------------------------------- */
 
 /* Fix vertical margin of admin buttons on mobile */
@@ -141,12 +146,14 @@ span[data-v-7d4a7f28] {
 .mb-4[data-v-84507135]:has(.btn-info) {
   margin-bottom: var(--spacing-32) !important;
 }
+
 .mb-4[data-v-b8247e57]:has(.btn-info) div,
 .mb-4[data-v-84507135]:has(.btn-info) div {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-8);
 }
+
 .mb-4[data-v-b8247e57]:has(.btn-info) div button,
 .mb-4[data-v-84507135]:has(.btn-info) div button {
   margin: 0 !important;
@@ -174,6 +181,7 @@ span[data-v-7d4a7f28] {
   box-shadow: none;
   background-color: var(--color-btn-secondary-active-bg);
 }
+
 .btn-info[data-v-b8247e57] svg,
 .btn-info[data-v-84507135] svg {
   display: none;
@@ -222,20 +230,23 @@ span[data-v-7d4a7f28] {
   border: 1px solid var(--color-border);
   background-color: var(--color-bg) !important;
 }
+
 .incident[data-v-b8247e57] h4,
 .incident[data-v-84507135] h4 {
   font-size: var(--font-size-300);
 }
+
 .incident[data-v-b8247e57] div,
 .incident[data-v-84507135] div {
   color: var(--color-text-primary);
 }
+
 .date.mt-3 {
   border-top: 1px solid var(--color-border);
   padding-top: var(--spacing-20);
 }
 
-/* OVERALL STATUS BLOCK
+/* MAIN STATUS BLOCK
 -------------------------------------------------- */
 
 .overall-status[data-v-b8247e57],
@@ -249,49 +260,51 @@ span[data-v-7d4a7f28] {
   font-size: var(--font-size-350);
   line-height: var(--font-line-height-200);
 }
-.overall-status[data-v-b8247e57] div,
-.overall-status[data-v-84507135] div {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-20);
-}
-.overall-status[data-v-b8247e57] svg,
-.overall-status[data-v-84507135] svg {
-  margin-right: 0 !important;
-  width: 1.5em;
-  height: 1.5em;
-}
 .overall-status[data-v-b8247e57]:has(.ok),
 .overall-status[data-v-84507135]:has(.ok) {
   border: 1px solid rgba(var(--rgb-color-green), .23);
   background-color: rgba(var(--rgb-color-green), .08);
-}
-.overall-status[data-v-b8247e57]:has(.ok) svg,
-.overall-status[data-v-84507135]:has(.ok) svg {
-  color: var(--color-green);
 }
 .overall-status[data-v-b8247e57]:has(.warning),
 .overall-status[data-v-84507135]:has(.warning) {
   border: 1px solid rgba(var(--rgb-color-orange), .23);
   background-color: rgba(var(--rgb-color-orange), .08);
 }
-.overall-status[data-v-b8247e57]:has(.warning) svg,
-.overall-status[data-v-84507135]:has(.warning) svg {
-  color: var(--color-orange);
-}
 .overall-status[data-v-b8247e57]:has(.danger),
 .overall-status[data-v-84507135]:has(.danger) {
   border: 1px solid rgba(var(--rgb-color-red), .23);
   background-color: rgba(var(--rgb-color-red), .08);
 }
-.overall-status[data-v-b8247e57]:has(.danger) svg,
-.overall-status[data-v-84507135]:has(.danger) svg {
-  color: var(--color-red);
-}
 .overall-status[data-v-b8247e57]:has(.status-maintenance),
 .overall-status[data-v-84507135]:has(.status-maintenance) {
   border: 1px solid rgba(var(--rgb-color-blue), .23);
   background-color: rgba(var(--rgb-color-blue), .08);
+}
+
+.overall-status[data-v-b8247e57] div,
+.overall-status[data-v-84507135] div {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-20);
+}
+
+.overall-status[data-v-b8247e57] svg,
+.overall-status[data-v-84507135] svg {
+  margin-right: 0 !important;
+  width: 1.5em;
+  height: 1.5em;
+}
+.overall-status[data-v-b8247e57]:has(.ok) svg,
+.overall-status[data-v-84507135]:has(.ok) svg {
+  color: var(--color-green);
+}
+.overall-status[data-v-b8247e57]:has(.warning) svg,
+.overall-status[data-v-84507135]:has(.warning) svg {
+  color: var(--color-orange);
+}
+.overall-status[data-v-b8247e57]:has(.danger) svg,
+.overall-status[data-v-84507135]:has(.danger) svg {
+  color: var(--color-red);
 }
 .overall-status[data-v-b8247e57]:has(.status-maintenance) svg,
 .overall-status[data-v-84507135]:has(.status-maintenance) svg {
@@ -310,14 +323,17 @@ span[data-v-7d4a7f28] {
   padding: var(--spacing-20) !important;
   color: var(--color-text-heading) !important;
 }
+
 .shadow-box.bg-maintenance .alert-heading {
   color: var(--color-text-heading);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-300);
 }
+
 .shadow-box.bg-maintenance .content {
   color: var(--color-text-primary);
 }
+
 .shadow-box.bg-maintenance div[data-v-b8247e57]:not([class]) div:not([class]),
 .shadow-box.bg-maintenance div[data-v-84507135]:not([class]) div:not([class]) {
   display: flex;
@@ -342,18 +358,9 @@ span[data-v-7d4a7f28] {
   margin-bottom: var(--spacing-32);
   padding: 0 !important;
 }
+
 .alert-heading.p-2 p {
   margin: 0;
-}
-
-/* Link (excluding button) */
-a:not(.btn),
-.dark a:not(.btn) {
-  color: inherit;
-}
-a:not(.btn):hover,
-.dark a:not(.btn):hover {
-  color: var(--color-blue);
 }
 
 /* PAGE DESCRIPTION
@@ -399,7 +406,6 @@ div[data-v-026459e0]:has(> .group-title) {
   grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-16);
 }
-
 @media (min-width: 532px) {
   .shadow-box.monitor-list > .monitor-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -419,14 +425,12 @@ div[data-v-026459e0]:has(> .group-title) {
 .monitor-list .item:hover {
   background-color: var(--color-block-bg) !important;
 }
-.monitor-list .item > .row {
-  flex-direction: column;
-}
+
 .monitor-list .item > .row > div {
   width: 100%;
 }
 
-/* Monitor name and badge container */
+/* Monitor name and uptime percentage container */
 .info {
   display: flex;
   align-items: center;
@@ -444,7 +448,7 @@ div[data-v-026459e0]:has(> .group-title) {
   white-space: nowrap;
 }
 
-/* Uptime percentage badge (now just text) */
+/* Uptime percentage */
 .badge {
   all: unset;
   order: 2;
@@ -459,12 +463,12 @@ div[data-v-026459e0]:has(> .group-title) {
   display: none;
 }
 
-/* Wrapper for the uptime history timeline and daily uptime text */
+/* Wrapper for the uptime bars home and uptime time */
 .wrap {
   padding: 0 !important;
 }
 
-/* Uptime history timeline */
+/* Uptime bars home */
 .hp-bar-big {
   display: flex;
   margin-bottom: 6px;
@@ -474,13 +478,13 @@ div[data-v-026459e0]:has(> .group-title) {
   padding-bottom: 0;
 }
 
-/* Uptime day bar in the uptime history timeline */
+/* Uptime bar in the uptime bars home */
 .hp-bar-big .beat[data-v-636dc6a9],
 .hp-bar-big .beat-hover-area .beat[data-v-3fe48e5d] {
   border-radius: 0;
   background-color: var(--color-green);
   width: 100% !important;
-  height: var(--size-uptime-day-bar-height) !important;
+  height: var(--size-uptime-bar-height) !important;
 }
 .hp-bar-big .beat[data-v-636dc6a9] {
   flex: 1;
@@ -509,7 +513,7 @@ div[data-v-026459e0]:has(> .group-title) {
 }
 .hp-bar-big .beat[data-v-636dc6a9].empty,
 .hp-bar-big .beat-hover-area .beat[data-v-3fe48e5d].empty {
-  background-color: var(--color-gray) !important;
+  background-color: var(--color-uptime-bar-empty-bg) !important;
 }
 .hp-bar-big .beat[data-v-636dc6a9].down,
 .hp-bar-big .beat-hover-area .beat[data-v-3fe48e5d].down {
@@ -524,7 +528,7 @@ div[data-v-026459e0]:has(> .group-title) {
   background-color: var(--color-blue);
 }
 
-/* Daily uptime text (below day bars) */
+/* Uptime time (below uptime bars) */
 .word[data-v-636dc6a9],
 .word[data-v-3fe48e5d] {
   color: var(--color-text-primary);
@@ -546,7 +550,7 @@ footer .alert-heading.p-2:has(*) {
 }
 
 /* Refresh timer */
-/* Remove/comment "display: none" to restore visibility */
+/* Remove or comment "display: none" to restore visibility */
 .refresh-info[data-v-b8247e57],
 .refresh-info[data-v-84507135]{
   display: none;
@@ -564,7 +568,6 @@ footer .alert-heading.p-2:has(*) {
 /* Input field for the monitor group name */
 .edit span[data-v-7d4a7f28][data-v-f71ca08e],
 .edit span[data-v-7d4a7f28][data-v-026459e0] {
-  background-color: var(--color-input-bg);
   padding: var(--spacing-4) var(--spacing-8);
 }
 
@@ -573,7 +576,6 @@ footer .alert-heading.p-2:has(*) {
 .edit h4[data-v-7d4a7f28][data-v-84507135][contenteditable="true"],
 .edit div[data-v-7d4a7f28][data-v-b8247e57],
 .edit div[data-v-7d4a7f28][data-v-84507135] {
-  background-color: var(--color-input-bg);
-  padding: var(--spacing-16) var(--spacing-20) !important;
+  padding: var(--spacing-8) var(--spacing-12) !important;
   color: var(--color-text-heading);
 }
