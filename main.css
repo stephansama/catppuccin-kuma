@@ -457,13 +457,55 @@ div[data-v-026459e0]:has(> .group-title) {
   color: var(--color-text-primary) !important;
 }
 
-/* Extra vertical indentation */
+/* ----------------------------------------------------------------
+   MONITOR TAGS
+------------------------------------------------------------------ */
+
+/* hide-all-tags switch – leave commented */
+/*
 .extra-info[data-v-f71ca08e],
-.extra-info[data-v-026459e0] {
-  display: none;
+.extra-info[data-v-026459e0]{
+    display:none;
+}
+*/
+
+.extra-info[data-v-f71ca08e],
+.extra-info[data-v-026459e0]{
+    display:flex !important;       /* flexbox again             */
+    flex-wrap:wrap;                /* allow wrapping            */
+    gap:var(--spacing-4) var(--spacing-8);  /* row, column gaps   */
+    margin-top:var(--spacing-4);
 }
 
-/* Wrapper for the uptime bars home and uptime time */
+/* chip */
+.tag-wrapper{
+    display:inline-flex !important; /* keep horizontal layout */
+    align-items:center;
+    gap:var(--spacing-4);
+    border-radius:var(--border-radius-400);
+    font-size:var(--font-size-100);
+    font-weight:var(--font-weight-medium);
+    max-width:100%;
+    box-sizing:border-box;
+    color:var(--tag-color, var(--color-text-heading));
+	margin-left: 0 !important;
+}
+
+/* text wraps only at spaces */
+.tag-wrapper .tag-text{ white-space:normal; }
+
+/* ---------- palette → translucent chips ---------------------- */
+.tag-wrapper[style*="rgb(75, 85, 99)"]  {--tag-color:#4B5563;background:rgba(75,85,99,.15)!important;border:1px solid rgba(75,85,99,.30);}
+.tag-wrapper[style*="rgb(220, 38, 38)"] {--tag-color:#DC2626;background:rgba(220,38,38,.15)!important;border:1px solid rgba(220,38,38,.30);}
+.tag-wrapper[style*="rgb(217, 119, 6)"] {--tag-color:#D97706;background:rgba(217,119,6,.15)!important;border:1px solid rgba(217,119,6,.30);}
+.tag-wrapper[style*="rgb(5, 150, 105)"] {--tag-color:#059669;background:rgba(5,150,105,.15)!important;border:1px solid rgba(5,150,105,.30);}
+.tag-wrapper[style*="rgb(37, 99, 235)"] {--tag-color:#2563EB;background:rgba(37,99,235,.15)!important;border:1px solid rgba(37,99,235,.30);}
+.tag-wrapper[style*="rgb(79, 70, 229)"] {--tag-color:#4F46E5;background:rgba(79,70,229,.15)!important;border:1px solid rgba(79,70,229,.30);}
+.tag-wrapper[style*="rgb(124, 58, 237)"]{--tag-color:#7C3AED;background:rgba(124,58,237,.15)!important;border:1px solid rgba(124,58,237,.30);}
+.tag-wrapper[style*="rgb(219, 39, 119)"]{--tag-color:#DB2777;background:rgba(219,39,119,.15)!important;border:1px solid rgba(219,39,119,.30);}
+
+/* unmapped (custom) colours keep the solid inline style */
+
 .wrap {
   padding: 0 !important;
 }
