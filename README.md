@@ -43,6 +43,13 @@
 
 You can easily customize the theme by modifying the variables inside the `:root {}` block.
 
+### Displaying Tags on the Status Page
+
+If you have enabled the tags feature in your status page settings, you must manually edit the CSS to make them visible. By default, the tags are hidden, even when the feature is active in the settings.
+
+1. Find the `/* Hide-all-tags switch – leave commented */`.
+2. You need to comment out the block that hides the tags **(OPTION 1)** and uncomment the block that displays them **(OPTION 2)**.
+
 ### Restoring the Refresh Timer
 
 The refresh timer is hidden by default. To make it visible again, find the `.refresh-info` rule and remove or comment out the `display: none;` line.
