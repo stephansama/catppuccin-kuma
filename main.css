@@ -3,18 +3,26 @@
 
 :root {
   /* Palette colors */
+  --color-gray: #7f8c8d;
   --color-red: #e74c3c;
   --color-orange: #f39c12;
   --color-teal: #1abc9c;
   --color-blue: #3498db;
   --color-green: #27ae60;
+  --color-indigo: #5c6bc0;
+  --color-purple: #9b59b6;
+  --color-pink: #e84393;
 
   /* Palette RGB colors */
+  --rgb-color-gray: 127, 140, 141;
   --rgb-color-red: 231, 76, 60;
   --rgb-color-orange: 243, 156, 18;
   --rgb-color-teal: 26, 188, 156;
   --rgb-color-blue: 52, 152, 219;
   --rgb-color-green: 39, 174, 96;
+  --rgb-color-indigo: 92, 107, 192;
+  --rgb-color-purple: 155, 89, 182;
+  --rgb-color-pink: 232, 67, 147;
 
   /* Light theme base colors */
   --color-bg: #fbfbfc;
@@ -431,6 +439,8 @@ div[data-v-026459e0]:has(> .group-title) {
 }
 
 .monitor-list .item > .row > div {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -438,6 +448,7 @@ div[data-v-026459e0]:has(> .group-title) {
 .info {
   display: flex;
   align-items: center;
+  order: 2;
   margin-bottom: var(--spacing-8);
 }
 
@@ -455,83 +466,76 @@ div[data-v-026459e0]:has(> .group-title) {
 /* Uptime percentage */
 .badge {
   all: unset;
-  order: 2;
+  order: 1;
   margin-left: auto;
   background-color: transparent !important;
   color: var(--color-text-primary) !important;
 }
 
-/* Hide-all-tags switch – leave commented */
-/* OPTION 1: Hide tags */
+/* Monitor tags wrapper */
 .extra-info[data-v-f71ca08e],
 .extra-info[data-v-026459e0] {
-  display: none;
-}
-/* OPTION 2: Show tags */
-/* .extra-info[data-v-f71ca08e],
-.extra-info[data-v-026459e0] {
-  display: flex !important;
   flex-wrap: wrap;
-  gap: var(--spacing-4) var(--spacing-8);
+  order: 1;
+  gap: var(--spacing-8);
   margin-top: var(--spacing-4);
-} */
+}
+.extra-info:not(:has(div[data-v-12c40cbd])) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.extra-info[data-v-f71ca08e] div,
+.extra-info[data-v-026459e0] div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
 
 /* Monitor tags */
 .tag-wrapper {
-  display: inline-flex !important;
   align-items: center;
-  gap: var(--spacing-4);
-  box-sizing: border-box;
-	margin-left: 0 !important;
-  border-radius: var(--border-radius-400);
-  max-width: 100%;
-  color: var(--tag-color, var(--color-text-heading));
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-100);
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
 }
 .tag-wrapper[style*="rgb(75, 85, 99)"] {
-  --tag-color: #4b5563;
-  border: 1px solid rgba(75, 85, 99, .3);
-  background: rgba(75, 85, 99, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-gray), .23);
+  background-color: rgba(var(--rgb-color-gray), .08) !important;
+  color: var(--color-gray) !important;
 }
 .tag-wrapper[style*="rgb(220, 38, 38)"] {
-  --tag-color: #dc2626;
-  border: 1px solid rgba(220, 38, 38, .3);
-  background: rgba(220, 38, 38, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-red), .23);
+  background-color: rgba(var(--rgb-color-red), .08) !important;
+  color: var(--color-red) !important;
 }
 .tag-wrapper[style*="rgb(217, 119, 6)"] {
-  --tag-color: #d97706;
-  border: 1px solid rgba(217, 119, 6, .3);
-  background: rgba(217, 119, 6, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-orange), .23);
+  background-color: rgba(var(--rgb-color-orange), .08) !important;
+  color: var(--color-orange) !important;
 }
 .tag-wrapper[style*="rgb(5, 150, 105)"] {
-  --tag-color: #059669;
-  border: 1px solid rgba(5, 150, 105, .3);
-  background: rgba(5, 150, 105, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-green), .23);
+  background-color: rgba(var(--rgb-color-green), .08) !important;
+  color: var(--color-green) !important;
 }
 .tag-wrapper[style*="rgb(37, 99, 235)"] {
-  --tag-color: #2563eb;
-  border: 1px solid rgba(37, 99, 235, .3);
-  background: rgba(37, 99, 235, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-blue), .23);
+  background-color: rgba(var(--rgb-color-blue), .08) !important;
+  color: var(--color-blue) !important;
 }
 .tag-wrapper[style*="rgb(79, 70, 229)"] {
-  --tag-color: #4f46e5;
-  border: 1px solid rgba(79, 70, 229, .3);
-  background: rgba(79, 70, 229, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-indigo), .23);
+  background-color: rgba(var(--rgb-color-indigo), .08) !important;
+  color: var(--color-indigo) !important;
 }
 .tag-wrapper[style*="rgb(124, 58, 237)"] {
-  --tag-color: #7c3aed;
-  border: 1px solid rgba(124, 58, 237, .3);
-  background: rgba(124, 58, 237, .15) !important;
+  border: 1px solid rgba(var(--rgb-color-purple), .23);
+  background-color: rgba(var(--rgb-color-purple), .08) !important;
+  color: var(--color-purple) !important;
 }
 .tag-wrapper[style*="rgb(219, 39, 119)"] {
-  --tag-color: #db2777;
-  border: 1px solid rgba(219, 39, 119, .3);
-  background: rgba(219, 39, 119, .15) !important;
-}
-
-.tag-wrapper .tag-text {
-  white-space: normal;
+  border: 1px solid rgba(var(--rgb-color-pink), .23);
+  background-color: rgba(var(--rgb-color-pink), .08) !important;
+  color: var(--color-pink) !important;
 }
 
 /* Wrapper for the uptime bars home and uptime time */
