@@ -388,6 +388,7 @@ div[data-v-026459e0]:has(> .group-title) {
   grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-16);
 }
+/* Enable 2 columns on wider screens; comment out to disable */
 @media (min-width: 532px) {
   .shadow-box.monitor-list > .monitor-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
