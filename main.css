@@ -457,6 +457,7 @@ div[data-v-026459e0]:has(> .group-title) {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-8);
+  min-width: 0;
 }
 
 /* Monitor tags */
