@@ -27,14 +27,14 @@
 		--rgb-color-pink: 245, 194, 231;
 
 		/* Light theme base colors */
-		--color-bg: #1e1e2e;
+		--color-bg: #11111b;
 		--color-text-primary: #cdd6f4;
 		--color-text-heading: #bac2de;
 		--color-text-secondary: #a6adc8;
 		--color-border: rgba(0, 0, 0, .1);
 		--color-uptime-bar-empty-bg: #d7dbdd;
-		--color-block-bg: #11111b;
-		--color-tooltip-bg: #11111b;
+		--color-block-bg: #1e1e2e;
+		--color-tooltip-bg: #1e1e2e;
 
 		/* Button: Secondary */
 		--color-btn-secondary-bg: transparent;
@@ -576,7 +576,7 @@ div[data-v-026459e0]:has(> .group-title) {
 /* Uptime bars home */
 .hp-bar-big {
 	display: flex;
-	margin-bottom: 6px;
+	margin-block: 6px;
 	padding: 0;
 }
 
