@@ -115,7 +115,9 @@ a:not(.btn),
   color: inherit;
 }
 a:not(.btn):hover,
-.dark a:not(.btn):hover {
+.dark a:not(.btn):hover,
+a:not(.btn):focus-visible {
+  outline: none;
   color: var(--color-blue);
 }
 
@@ -178,7 +180,8 @@ span[data-v-7d4a7f28] {
   font-size: var(--font-size-100);
   line-height: var(--font-line-height-200);
 }
-.mb-4[data-v-a2098280]:has([data-testid="edit-button"]) .btn-primary:hover {
+.mb-4[data-v-a2098280]:has([data-testid="edit-button"]) .btn-primary:hover,
+.mb-4[data-v-a2098280]:has([data-testid="edit-button"]) .btn-primary:focus-visible {
   background-color: var(--color-btn-secondary-hover-bg);
 }
 .mb-4[data-v-a2098280]:has([data-testid="edit-button"]) .btn-primary:active {
@@ -533,9 +536,11 @@ div[data-v-026459e0]:has(> .group-title) {
   flex: 1;
   padding: 0 1px 0 0 !important;
 }
-.hp-bar-big .beat-hover-area[data-v-ce0d40a3]:not(.empty):hover {
+.hp-bar-big .beat-hover-area[data-v-ce0d40a3]:not(.empty):hover,
+.hp-bar-big .beat-hover-area[data-v-ce0d40a3]:not(.empty):focus-visible {
   transform: none;
   opacity: .7;
+  outline: none;
 }
 .hp-bar-big .beat-hover-area:first-of-type .beat[data-v-ce0d40a3] {
   border-top-left-radius: var(--border-radius-200);
