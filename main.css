@@ -321,19 +321,13 @@ span[data-v-7d4a7f28] {
   color: var(--color-text-primary);
 }
 
-.shadow-box.bg-maintenance div[data-v-a2098280]:not([class]) div:not([class]) {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 var(--spacing-8);
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--spacing-20);
-}
-
 .timeslot {
+  display: flex;
   margin: 0 !important;
+  border-top: 1px solid var(--color-border);
   border-radius: 0;
   background-color: transparent !important;
-  padding: 0;
+  padding: var(--spacing-20) 0 0;
   color: var(--color-text-primary) !important;
   font-size: var(--font-size-50);
 }
