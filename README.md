@@ -11,22 +11,20 @@
   <a href="#installation">Installation</a>
   ·
   <a href="#personalization">Personalization</a>
-  ·
-  <a href="#troubleshooting">Troubleshooting</a>
 </p>
 
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./.github/assets/light.png">
-    <img alt="Cute Kuma" src="./.github/assets/dark.png">
+    <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/2-col/dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./.github/assets/2-col/light.png">
+    <img alt="Cute Kuma" src="./.github/assets/2-col/dark.png">
   </picture>
 </p>
 
 ## Features
 
 - Modern design inspired by top monitoring services
-- Support for Uptime Kuma v1 and v2
+- Support for Uptime Kuma v2
 - Support for light and dark themes
 - Hidden refresh timer for a cleaner look (can be easily restored)
 - Clean, easily customizable and extendable code
@@ -43,38 +41,26 @@
 
 You can easily customize the theme by modifying the variables inside the `:root {}` block.
 
-### Displaying Tags on the Status Page
+### Columns layout
 
-If you have enabled the tags feature in your status page settings, you must manually edit the CSS to make them visible. By default, the tags are hidden, even when the feature is active in the settings.
+<details>
+  <summary>Preview</summary>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/1-col/dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./.github/assets/1-col/light.png">
+    <img alt="Cute Kuma: 2 columns" src="./.github/assets/1-col/dark.png">
+  </picture>
+</details>
 
-1. Find the `/* Hide-all-tags switch – leave commented */`.
-2. You need to comment out the block that hides the tags **(OPTION 1)** and uncomment the block that displays them **(OPTION 2)**.
+By default, 2 columns are shown on wide screens. If you prefer a single column everywhere, disable the 2‑column rule.
+
+> [!IMPORTANT]
+> If you enable tag display (monitor tags), it is strongly recommended to use a 1‑column layout.
+
+1. Search for this comment:
+`/* Enable 2 columns on wider screens; comment out to disable */`
+2. Comment out the block immediately below it.
 
 ### Restoring the Refresh Timer
 
 The refresh timer is hidden by default. To make it visible again, find the `.refresh-info` rule and remove or comment out the `display: none;` line.
-
-## Troubleshooting
-
-### Country Flag Emojis Not Displaying on Windows
-
-Browsers on Windows can't render country flag emojis correctly.
-
-To fix it, add the following code to the very beginning of your CSS.
-
-```
-@font-face {
-  src: url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2") format("woff2");
-  font-family: "Twemoji Country Flags";
-  unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062, U+E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073, U+E0074, U+E0077, U+E007F;
-}
-```
-
-> [!IMPORTANT]
-> For **Uptime Kuma v1** you most likely need to add the following code.
-
-```
-#app {
-  font-family: BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, "noto sans", sans-serif, "apple color emoji", "Twemoji Country Flags", "segoe ui emoji", "segoe ui symbol", "noto color emoji";
-}
-```
