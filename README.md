@@ -1,4 +1,9 @@
-<h3 align="center">Cute Kuma</h3>
+<h3 align="center">
+    <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+    <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+  Catppuccin for <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a>
+    <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+</h3>
 
 <p align="center">
   Give your <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a> status page a cute and modern look with custom CSS
@@ -64,3 +69,4 @@ By default, 2 columns are shown on wide screens. If you prefer a single column e
 ### Restoring the Refresh Timer
 
 The refresh timer is hidden by default. To make it visible again, find the `.refresh-info` rule and remove or comment out the `display: none;` line.
+
